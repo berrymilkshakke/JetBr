@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .flex-container{
+            position: relative;
+        }
+        .title{
+            font-size: 2em;
+        }
+        .button {
+            position: absolute;
+            padding: 10px 10px 10px 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-container">
+    <div class="title">Case Converter</div>
+        <label for="story">
+            <textarea id="story"></textarea>
+        </label>
+    <div class="button">
+<button id="upper-case">Upper Case</button>
+<button id="lower-case">Lower Case</button>
+<button id="proper-case">Proper Case</button>
+<button id="sentence-case">Sentence Case</button>
+    </div>
+</div>
+<script>
+    let story = document.getElementById("story");
+
+    let button1 = document.getElementById("upper-case");
+    button1.addEventListener("click", function() {
+        story.value = story.value.toUpperCase();
+    });
+
+    let button2 = document.getElementById("lower-case");
+    button2.addEventListener("click", function() {
+        story.value = story.value.toLowerCase();
+    });
+
+    let button3 = document.getElementById("proper-case");
+    button3.addEventListener("click", function() {
+        story.value = story.value.split(' ').map(function(s) {
+            return s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase();
+        }).join(' ');
+    });
+
+    let button4 = document.getElementById("sentence-case");
+    button4.addEventListener('click', function() {
+        story.value = story.value.split('. ').map(function (f) {
+            return f.slice(0, 1).toUpperCase() + f.slice(1).toLowerCase();
+        }).join('. ');
+    });
+</script>
+</body>
+</html>
